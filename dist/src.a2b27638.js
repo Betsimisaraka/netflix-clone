@@ -35639,30 +35639,7 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"src/fixtures/jumbo.json":[function(require,module,exports) {
-module.exports = [{
-  "id": 1,
-  "title": "Enjoy on your TV.",
-  "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
-  "image": "/images/misc/home-tv.jpg",
-  "alt": "Tiger King on Netflix",
-  "direction": "row"
-}, {
-  "id": 2,
-  "title": "Download your programmes to watch on the go.",
-  "subTitle": "Save your data and watch all your favourites offline.",
-  "image": "/images/misc/home-mobile.jpg",
-  "alt": "Tiger King on Netflix",
-  "direction": "row-reverse"
-}, {
-  "id": 3,
-  "title": "Watch everywhere.",
-  "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
-  "image": "/images/misc/home-imac.jpg",
-  "alt": "Money Heist on Netflix",
-  "direction": "row"
-}];
-},{}],"src/components/jumbotron/styles/jumbotron.js":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"src/components/jumbotron/styles/jumbotron.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35837,7 +35814,182 @@ Jumbotron.Pane = function JumbotronPane(_ref6) {
 
   return /*#__PURE__*/_react.default.createElement(_jumbotron.Pane, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/jumbotron":"src/components/jumbotron/styles/jumbotron.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/jumbotron":"src/components/jumbotron/styles/jumbotron.js"}],"src/components/footer/styles/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Break = exports.Link = exports.Text = exports.Title = exports.Column = exports.Row = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject());
+
+exports.Container = Container;
+
+var Row = _styledComponents.default.div(_templateObject2());
+
+exports.Row = Row;
+
+var Column = _styledComponents.default.div(_templateObject3());
+
+exports.Column = Column;
+
+var Title = _styledComponents.default.p(_templateObject4());
+
+exports.Title = Title;
+
+var Text = _styledComponents.default.p(_templateObject5());
+
+exports.Text = Text;
+
+var Link = _styledComponents.default.a(_templateObject6());
+
+exports.Link = Link;
+
+var Break = _styledComponents.default.div(_templateObject7());
+
+exports.Break = Break;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/footer/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Footer;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _footer = require("./styles/footer");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Footer(_ref) {
+  var children = _ref.children,
+      restProps = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Container, restProps, children);
+}
+
+Footer.Row = function FooterRow(_ref2) {
+  var children = _ref2.children,
+      restProps = _objectWithoutProperties(_ref2, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Row, restProps, children);
+};
+
+Footer.Column = function FooterColumn(_ref3) {
+  var children = _ref3.children,
+      restProps = _objectWithoutProperties(_ref3, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Column, restProps, children);
+};
+
+Footer.Title = function FooterTitle(_ref4) {
+  var children = _ref4.children,
+      restProps = _objectWithoutProperties(_ref4, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Title, restProps, children);
+};
+
+Footer.Text = function FooterText(_ref5) {
+  var children = _ref5.children,
+      restProps = _objectWithoutProperties(_ref5, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Text, restProps, children);
+};
+
+Footer.Link = function FooterLink(_ref6) {
+  var children = _ref6.children,
+      restProps = _objectWithoutProperties(_ref6, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_footer.Link, restProps, children);
+};
+
+Footer.Break = function FooterBreak(_ref7) {
+  var restProps = Object.assign({}, _ref7);
+  return /*#__PURE__*/_react.default.createElement(_footer.Break, restProps);
+};
+},{"react":"node_modules/react/index.js","./styles/footer":"src/components/footer/styles/footer.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35849,11 +36001,93 @@ Object.defineProperty(exports, "Jumbotron", {
     return _jumbotron.default;
   }
 });
+Object.defineProperty(exports, "Footer", {
+  enumerable: true,
+  get: function () {
+    return _footer.default;
+  }
+});
 
 var _jumbotron = _interopRequireDefault(require("./jumbotron"));
 
+var _footer = _interopRequireDefault(require("./footer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./jumbotron":"src/components/jumbotron/index.js"}],"src/containers/jumbotron.js":[function(require,module,exports) {
+},{"./jumbotron":"src/components/jumbotron/index.js","./footer":"src/components/footer/index.js"}],"src/containers/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FooterContainer;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _components = require("../components");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FooterContainer() {
+  return /*#__PURE__*/_react.default.createElement(_components.Footer, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Title, null, "Question? Contact aus."), /*#__PURE__*/_react.default.createElement(_components.Footer.Break, null), /*#__PURE__*/_react.default.createElement(_components.Footer.Row, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Column, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "FAQ"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Investor Relations"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Ways to watch"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Corporate Information"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Netflix Originals")), /*#__PURE__*/_react.default.createElement(_components.Footer.Column, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Jobs"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Help Center"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Terms of Use"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Contact us")), /*#__PURE__*/_react.default.createElement(_components.Footer.Column, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Account"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Redeem gift cards"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Privacy"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Speed test")), /*#__PURE__*/_react.default.createElement(_components.Footer.Column, null, /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Medisa Center"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Buy gift cards"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Cookies preferences"), /*#__PURE__*/_react.default.createElement(_components.Footer.Link, {
+    href: "#"
+  }, "Legal Notices"))), /*#__PURE__*/_react.default.createElement(_components.Footer.Break, null), /*#__PURE__*/_react.default.createElement(_components.Footer.Text, null, "Netflix Madagascar"));
+}
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/fixtures/jumbo.json":[function(require,module,exports) {
+module.exports = [{
+  "id": 1,
+  "title": "Enjoy on your TV.",
+  "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
+  "image": "/images/misc/home-tv.jpg",
+  "alt": "Tiger King on Netflix",
+  "direction": "row"
+}, {
+  "id": 2,
+  "title": "Download your programmes to watch on the go.",
+  "subTitle": "Save your data and watch all your favourites offline.",
+  "image": "/images/misc/home-mobile.jpg",
+  "alt": "Tiger King on Netflix",
+  "direction": "row-reverse"
+}, {
+  "id": 3,
+  "title": "Watch everywhere.",
+  "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+  "image": "/images/misc/home-imac.jpg",
+  "alt": "Money Heist on Netflix",
+  "direction": "row"
+}];
+},{}],"src/containers/jumbotron.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35890,14 +36124,16 @@ exports.default = Home;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _footer = _interopRequireDefault(require("../containers/footer"));
+
 var _jumbotron = require("../containers/jumbotron");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Home() {
-  return /*#__PURE__*/_react.default.createElement(_jumbotron.JumbotronContainer, null);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_jumbotron.JumbotronContainer, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 }
-},{"react":"node_modules/react/index.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../containers/footer":"src/containers/footer.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
