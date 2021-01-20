@@ -8,6 +8,9 @@ export const Inner = styled.div`
     max-width: 1100px;
     margin: auto;
     width: 100%;
+    @media (max-width: 1000px) {
+       flex-direction: column;
+    }
 `;
 
 export const Pane = styled.div`
