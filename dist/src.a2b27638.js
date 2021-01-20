@@ -35989,7 +35989,156 @@ Footer.Break = function FooterBreak(_ref7) {
   var restProps = Object.assign({}, _ref7);
   return /*#__PURE__*/_react.default.createElement(_footer.Break, restProps);
 };
-},{"react":"node_modules/react/index.js","./styles/footer":"src/components/footer/styles/footer.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/footer":"src/components/footer/styles/footer.js"}],"src/components/accordion/styles/accordion.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Body = exports.Header = exports.Title = exports.Item = exports.Inner = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n    max-width: 1200px;\n    font-size: 26px;\n    transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);\n    font-weight: normal;\n    line-height: normal;\n    background: #303030;\n    padding: 0.8em 1.2em 0.8em 1.2em;\n    user-select: none;\n    align-items: center;\n\n    @media (max-width: 600px) {\n        font-size: 16px;\n        line-height: 22px;\n    }\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    justify-content: space-between;\n    cursor: pointer;\n    margin-bottom: 1px;\n    font-size: 26px;\n    font-weight: normal;\n    background: #303030;\n    padding: 0.8em 1.2em 0.8em 1.2em;\n    user-select: none;\n    align-items: center;\n\n    @media (max-width: 600px) {\n        font-size: 16px;\n    }\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 50px;\n    line-height: 1.1;\n    margin-top: 0;\n    margin-bottom: 8px;\n    color: white;\n    text-align: center;\n\n    @media (max-width: 600px) {\n        font-size: 35px;\n    }\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n    color: white;\n    margin-bottom: 10px;\n    &:first-of-type {\n        margin-top: 3em;\n    }\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    color: white;\n    padding: 70px 45px;\n    flex-direction: column;\n    max-width: 815px;\n    margin: auto;\n\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    dispaly: flex;\n    border-bottom: 8px solid #222;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.section(_templateObject());
+
+exports.Container = Container;
+
+var Inner = _styledComponents.default.div(_templateObject2());
+
+exports.Inner = Inner;
+
+var Item = _styledComponents.default.div(_templateObject3());
+
+exports.Item = Item;
+
+var Title = _styledComponents.default.h1(_templateObject4());
+
+exports.Title = Title;
+
+var Header = _styledComponents.default.div(_templateObject5());
+
+exports.Header = Header;
+
+var Body = _styledComponents.default.div(_templateObject6());
+
+exports.Body = Body;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/accordion/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Accordion;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _accordion = require("./styles/accordion");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Accordion(_ref) {
+  var children = _ref.children,
+      restProps = _objectWithoutProperties(_ref, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_accordion.Container, restProps, /*#__PURE__*/_react.default.createElement(_accordion.Inner, null, children));
+}
+
+Accordion.Item = function AccordionItem(_ref2) {
+  var children = _ref2.children,
+      restProps = _objectWithoutProperties(_ref2, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_accordion.Item, restProps, children);
+};
+
+Accordion.Title = function AccordionTitle(_ref3) {
+  var children = _ref3.children,
+      restProps = _objectWithoutProperties(_ref3, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_accordion.Title, restProps, children);
+};
+
+Accordion.Header = function AccordionHeader(_ref4) {
+  var children = _ref4.children,
+      restProps = _objectWithoutProperties(_ref4, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_accordion.Header, restProps, children);
+};
+
+Accordion.Body = function AccordionBody(_ref5) {
+  var children = _ref5.children,
+      restProps = _objectWithoutProperties(_ref5, ["children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_accordion.Body, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/accordion":"src/components/accordion/styles/accordion.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36007,13 +36156,66 @@ Object.defineProperty(exports, "Footer", {
     return _footer.default;
   }
 });
+Object.defineProperty(exports, "Accordion", {
+  enumerable: true,
+  get: function () {
+    return _accordion.default;
+  }
+});
 
 var _jumbotron = _interopRequireDefault(require("./jumbotron"));
 
 var _footer = _interopRequireDefault(require("./footer"));
 
+var _accordion = _interopRequireDefault(require("./accordion"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./jumbotron":"src/components/jumbotron/index.js","./footer":"src/components/footer/index.js"}],"src/containers/footer.js":[function(require,module,exports) {
+},{"./jumbotron":"src/components/jumbotron/index.js","./footer":"src/components/footer/index.js","./accordion":"src/components/accordion/index.js"}],"src/fixtures/faqs.json":[function(require,module,exports) {
+module.exports = [{
+  "id": 1,
+  "header": "What is Netflix?",
+  "body": "Netflix is a streaming service that offers a wide variety of award-winning TV programmes, films, anime, documentaries and more – on thousands of internet-connected devices.\n\nYou can watch as much as you want, whenever you want, without a single advert – all for one low monthly price. There's always something new to discover, and new TV programmes and films are added every week!"
+}, {
+  "id": 2,
+  "header": "How much does Netflix cost?",
+  "body": "Watch Netflix on your smartphone, tablet, smart TV, laptop or streaming device, all for one low fixed monthly fee. Plans start from £5.99 a month. No extra costs or contracts."
+}, {
+  "id": 3,
+  "header": "Where can I watch?",
+  "body": "Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.\n\nYou can also download your favourite programmes with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere."
+}, {
+  "id": 4,
+  "header": "How do I cancel?",
+  "body": "Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account at any time."
+}, {
+  "id": 5,
+  "header": "What can I watch on Netflix?",
+  "body": "Netflix has an extensive library of feature films, documentaries, TV programmes, anime, award-winning Netflix originals, and more. Watch as much as you want, any time you want."
+}];
+},{}],"src/containers/faqs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FaqsContainer;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _components = require("../components");
+
+var _faqs = _interopRequireDefault(require("../fixtures/faqs.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FaqsContainer() {
+  return /*#__PURE__*/_react.default.createElement(_components.Accordion, null, /*#__PURE__*/_react.default.createElement(_components.Accordion.Title, null, "Frequently Asked Questions"), _faqs.default.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement(_components.Accordion.Item, {
+      key: item.id
+    }, /*#__PURE__*/_react.default.createElement(_components.Accordion.Header, null, item.header), /*#__PURE__*/_react.default.createElement(_components.Accordion.Body, null, item.body));
+  }));
+}
+},{"react":"node_modules/react/index.js","../components":"src/components/index.js","../fixtures/faqs.json":"src/fixtures/faqs.json"}],"src/containers/footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36124,6 +36326,8 @@ exports.default = Home;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _faqs = _interopRequireDefault(require("../containers/faqs"));
+
 var _footer = _interopRequireDefault(require("../containers/footer"));
 
 var _jumbotron = require("../containers/jumbotron");
@@ -36131,9 +36335,9 @@ var _jumbotron = require("../containers/jumbotron");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Home() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_jumbotron.JumbotronContainer, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_jumbotron.JumbotronContainer, null), /*#__PURE__*/_react.default.createElement(_faqs.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 }
-},{"react":"node_modules/react/index.js","../containers/footer":"src/containers/footer.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/app.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../containers/faqs":"src/containers/faqs.js","../containers/footer":"src/containers/footer.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
