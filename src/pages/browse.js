@@ -8,8 +8,6 @@ export default function Browse() {
     const { films } = useContent('films');
     const slides = selectionMap({ series, films });
 
-    console.log(slides);
-
     return (
         <BrowseContainer slides={slides} />
     )
