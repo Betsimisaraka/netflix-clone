@@ -35654,7 +35654,151 @@ var SIGN_IN = "/signin";
 exports.SIGN_IN = SIGN_IN;
 var SIGN_UP = "/signup";
 exports.SIGN_UP = SIGN_UP;
-},{}],"src/components/jumbotron/styles/jumbotron.js":[function(require,module,exports) {
+},{}],"src/context/firebase.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FirebaseContext = void 0;
+
+var _react = require("react");
+
+var FirebaseContext = (0, _react.createContext)(null);
+exports.FirebaseContext = FirebaseContext;
+},{"react":"node_modules/react/index.js"}],"src/hooks/use-content.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useContent;
+
+var _react = require("react");
+
+var _firebase = require("../context/firebase");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function useContent(target) {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      content = _useState2[0],
+      setContent = _useState2[1];
+
+  var _useContext = (0, _react.useContext)(_firebase.FirebaseContext),
+      firebase = _useContext.firebase;
+
+  (0, _react.useEffect)(function () {
+    firebase.firestore().collection(target).get().then(function (snapshot) {
+      var allContent = snapshot.docs.map(function (contentObj) {
+        return _objectSpread(_objectSpread({}, contentObj.data()), {}, {
+          docsId: contentObj.id
+        });
+      });
+      setContent(allContent);
+    }).catch(function (error) {
+      console.log(error.message);
+    });
+  }, []);
+  return _defineProperty({}, target, content);
+}
+},{"react":"node_modules/react/index.js","../context/firebase":"src/context/firebase.js"}],"src/hooks/use-auth-listener.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useAuthListener;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _firebase = require("../context/firebase");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function useAuthListener() {
+  var _useState = (0, _react.useState)(localStorage.getItem('authUser')),
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1];
+
+  var _useContext = (0, _react.useContext)(_firebase.FirebaseContext),
+      firebase = _useContext.firebase;
+
+  (0, _react.useEffect)(function () {
+    var listener = firebase.auth().onAuthStateChanged(function (authUser) {
+      if (authUser) {
+        localStorage.setItem('authUser', JSON.stringify(authUser));
+        setUser(authUser);
+      } else {
+        localStorage.removeItem('authUser');
+        setUser(null);
+      }
+    });
+    return function () {
+      return listener();
+    };
+  }, []);
+  return {
+    user: user
+  };
+}
+},{"react":"node_modules/react/index.js","../context/firebase":"src/context/firebase.js"}],"src/hooks/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "useContent", {
+  enumerable: true,
+  get: function () {
+    return _useContent.default;
+  }
+});
+Object.defineProperty(exports, "useAuthListener", {
+  enumerable: true,
+  get: function () {
+    return _useAuthListener.default;
+  }
+});
+
+var _useContent = _interopRequireDefault(require("./use-content"));
+
+var _useAuthListener = _interopRequireDefault(require("./use-auth-listener"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./use-content":"src/hooks/use-content.js","./use-auth-listener":"src/hooks/use-auth-listener.js"}],"src/components/jumbotron/styles/jumbotron.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38191,19 +38335,7 @@ function Home() {
     placeholder: "Email Address"
   }), /*#__PURE__*/_react.default.createElement(_components.OptForm.Button, null, "Try it now"), /*#__PURE__*/_react.default.createElement(_components.OptForm.Text, null, "Ready to watch? Enter your email to create your membership")))), /*#__PURE__*/_react.default.createElement(_jumbotron.JumbotronContainer, null), /*#__PURE__*/_react.default.createElement(_faqs.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 }
-},{"react":"node_modules/react/index.js","../containers/faqs":"src/containers/faqs.js","../containers/footer":"src/containers/footer.js","../containers/header":"src/containers/header.js","../components":"src/components/index.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/context/firebase.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FirebaseContext = void 0;
-
-var _react = require("react");
-
-var FirebaseContext = (0, _react.createContext)(null);
-exports.FirebaseContext = FirebaseContext;
-},{"react":"node_modules/react/index.js"}],"src/pages/signin.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../containers/faqs":"src/containers/faqs.js","../containers/footer":"src/containers/footer.js","../containers/header":"src/containers/header.js","../components":"src/components/index.js","../containers/jumbotron":"src/containers/jumbotron.js"}],"src/pages/signin.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38269,12 +38401,11 @@ function Signin() {
   function handleSignin(event) {
     event.preventDefault();
     firebase.auth().signInWithEmailAndPassword(emailAddress, password).then(function () {
-      setEmailAddress('');
-      setPassword('');
-      setError('');
       history.push(ROUTES.BROWSE);
     }).catch(function (error) {
-      return setError(error.message);
+      setEmailAddress('');
+      setPassword('');
+      setError(error.message);
     });
   }
 
@@ -38379,13 +38510,13 @@ function Signup() {
         displayName: firstName,
         photoURL: Math.floor(Math.random() * 5) + 1
       }).then(function () {
-        setEmailAddress('');
-        setPassword('');
-        setFirstName('');
         history.push(ROUTES.BROWSE);
       });
     }).catch(function (error) {
-      return setError(error.message);
+      setEmailAddress('');
+      setPassword('');
+      setFirstName('');
+      setError(error.message);
     });
   }
 
@@ -40247,76 +40378,7 @@ function BrowseContainer(_ref) {
     setProfile: setProfile
   });
 }
-},{"react":"node_modules/react/index.js","fuse.js":"node_modules/fuse.js/dist/fuse.esm.js","../components":"src/components/index.js","../constants/routes":"src/constants/routes.js","../context/firebase":"src/context/firebase.js","./profiles":"src/containers/profiles.js","./footer":"src/containers/footer.js"}],"src/hooks/use-content.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useContent;
-
-var _react = require("react");
-
-var _firebase = require("../context/firebase");
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function useContent(target) {
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      content = _useState2[0],
-      setContent = _useState2[1];
-
-  var _useContext = (0, _react.useContext)(_firebase.FirebaseContext),
-      firebase = _useContext.firebase;
-
-  (0, _react.useEffect)(function () {
-    firebase.firestore().collection(target).get().then(function (snapshot) {
-      var allContent = snapshot.docs.map(function (contentObj) {
-        return _objectSpread(_objectSpread({}, contentObj.data()), {}, {
-          docsId: contentObj.id
-        });
-      });
-      setContent(allContent);
-    }).catch(function (error) {
-      console.log(error.message);
-    });
-  }, []);
-  return _defineProperty({}, target, content);
-}
-},{"react":"node_modules/react/index.js","../context/firebase":"src/context/firebase.js"}],"src/hooks/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "useContent", {
-  enumerable: true,
-  get: function () {
-    return _useContent.default;
-  }
-});
-
-var _useContent = _interopRequireDefault(require("./use-content"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./use-content":"src/hooks/use-content.js"}],"src/utils/selection-map.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","fuse.js":"node_modules/fuse.js/dist/fuse.esm.js","../components":"src/components/index.js","../constants/routes":"src/constants/routes.js","../context/firebase":"src/context/firebase.js","./profiles":"src/containers/profiles.js","./footer":"src/containers/footer.js"}],"src/utils/selection-map.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40471,7 +40533,81 @@ var _signup = _interopRequireDefault(require("./signup"));
 var _browse = _interopRequireDefault(require("./browse"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Home":"src/pages/Home.js","./signin":"src/pages/signin.js","./signup":"src/pages/signup.js","./browse":"src/pages/browse.js"}],"src/app.js":[function(require,module,exports) {
+},{"./Home":"src/pages/Home.js","./signin":"src/pages/signin.js","./signup":"src/pages/signup.js","./browse":"src/pages/browse.js"}],"src/helpers/routes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.IsUserRedirect = IsUserRedirect;
+exports.ProtectedRoute = ProtectedRoute;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function IsUserRedirect(_ref) {
+  var user = _ref.user,
+      loggedInPath = _ref.loggedInPath,
+      children = _ref.children,
+      restProps = _objectWithoutProperties(_ref, ["user", "loggedInPath", "children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, _extends({}, restProps, {
+    render: function render() {
+      if (!user) {
+        return children;
+      }
+
+      if (user) {
+        return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Redirect, {
+          to: {
+            pathname: loggedInPath
+          }
+        });
+      }
+
+      return null;
+    }
+  }));
+}
+
+function ProtectedRoute(_ref2) {
+  var user = _ref2.user,
+      children = _ref2.children,
+      restProps = _objectWithoutProperties(_ref2, ["user", "children"]);
+
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, _extends({}, restProps, {
+    render: function render(_ref3) {
+      var location = _ref3.location;
+
+      if (user) {
+        return children;
+      }
+
+      if (!user) {
+        return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Redirect, {
+          to: {
+            pathname: 'signin',
+            state: {
+              from: location
+            }
+          }
+        });
+      }
+
+      return null;
+    }
+  }));
+}
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40485,7 +40621,11 @@ var _reactRouterDom = require("react-router-dom");
 
 var ROUTES = _interopRequireWildcard(require("./constants/routes"));
 
+var _hooks = require("./hooks");
+
 var _pages = require("./pages");
+
+var _routes2 = require("./helpers/routes");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -40494,17 +40634,27 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  var _useAuthListener = (0, _hooks.useAuthListener)(),
+      user = _useAuthListener.user;
+
+  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_routes2.IsUserRedirect, {
+    user: user,
+    loggedInPath: ROUTES.BROWSE,
     path: ROUTES.SIGN_IN
-  }, /*#__PURE__*/_react.default.createElement(_pages.Signin, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_pages.Signin, null)), /*#__PURE__*/_react.default.createElement(_routes2.IsUserRedirect, {
+    user: user,
+    loggedInPath: ROUTES.BROWSE,
     path: ROUTES.SIGN_UP
-  }, /*#__PURE__*/_react.default.createElement(_pages.Signup, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_pages.Signup, null)), /*#__PURE__*/_react.default.createElement(_routes2.ProtectedRoute, {
+    user: user,
     path: ROUTES.BROWSE
-  }, /*#__PURE__*/_react.default.createElement(_pages.Browse, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_pages.Browse, null)), /*#__PURE__*/_react.default.createElement(_routes2.IsUserRedirect, {
+    user: user,
+    loggedInPath: ROUTES.BROWSE,
     path: ROUTES.HOME
   }, /*#__PURE__*/_react.default.createElement(_pages.Home, null))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./constants/routes":"src/constants/routes.js","./pages":"src/pages/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./constants/routes":"src/constants/routes.js","./hooks":"src/hooks/index.js","./pages":"src/pages/index.js","./helpers/routes":"src/helpers/routes.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -40563,7 +40713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65190" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63815" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
